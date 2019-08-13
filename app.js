@@ -6,13 +6,12 @@ const app = express();
 
 const PORT = 3000;
 const router = require('./routes');
-const logReqUrl = require('./middleware/log-req-url');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // hot reloading in dev env
-// can add production settings here too
+// can add production settings here too ie. optimization for bundling, etc
 // if (NODE_ENV = prod) use webpack.config.prod.js or something like that
 if (process.env.NODE_ENV === 'dev') {
   const webpack = require('webpack');

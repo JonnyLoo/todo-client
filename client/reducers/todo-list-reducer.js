@@ -2,6 +2,7 @@ import createReducer from './create-reducer';
 import * as ActionTypes from '../constants/action-types';
 
 export const todoList = {
+  name: '',
   items: [],
   isFetching: false,
   error: null
@@ -16,15 +17,20 @@ export default createReducer(todoList, {
     };
   },
 
-  [ActionTypes.GET_TODO_LIST_SUCCESS]: (state) => {
+  [ActionTypes.GET_TODO_LIST_SUCCESS]: (state, payload) => {
     return {
-      ...state
+      ...state,
+      name: payload.name,
+      items: payload.items,
+      isFetching: false
     };
   },
 
-  [ActionTypes.GET_TODO_LIST_ERROR]: (state) => {
+  [ActionTypes.GET_TODO_LIST_ERROR]: (state, payload) => {
     return {
-      ...state
+      ...state,
+      error: payload,
+      isFetching: false
     };
   },
 

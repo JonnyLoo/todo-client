@@ -1,7 +1,7 @@
 const express = require('express');
 
 const ROUTER = express.Router();
-const controller = require('../api/controller');
+const controller = require('../controllers/controller');
 
 // link routes to their handlers
 ROUTER.get('/', controller.getList);

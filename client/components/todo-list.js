@@ -14,15 +14,31 @@ export class TodoList extends React.Component {
   }
 
   render() {
+    if (this.props.isFetching) {
+      return (<div className='center'>{ 'Loading...' }</div>);
+    }
+
     return (
-      <div className='center'></div>
+      <div className='center'>
+        {this.props.error ? (
+          <div className='todo-list-error'>{ 'error' }</div>
+        ) :
+        (
+          <div className='todo-list'>
+            { this.props.items.map(item => <div>{ item.name }</div>) }
+          </div>
+        )}
+      </div>
     );
   }
 };
 
 const mapStateToProps = (state) => {
   return {
-    items: state.todoList.items
+    name: state.todoList.name,
+    items: state.todoList.items,
+    isFetching: state.todoList.isFetching,
+    error: state.todoList.error
   };
 };
 

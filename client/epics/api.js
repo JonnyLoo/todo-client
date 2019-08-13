@@ -1,7 +1,10 @@
 import fetch from 'isomorphic-fetch';
 import {Observable, from} from 'rxjs';
+import {assessResponseStatus} from '../utils/request-utils';
 
-const fetchHelper = (url, method) => {
+const BASE_URL = 'http://localhost:3000/api/item';
+
+const fetchHelper = (url, method, body) => {
   const requestOptions = {
     method: method,
     headers: {
@@ -10,34 +13,34 @@ const fetchHelper = (url, method) => {
     }
   };
 
+  if (body) {
+    requestOptions.body = JSON.stringify(body);
+  }
+
   const request = fetch(url, requestOptions)
-    .then(response => {
-      return response.json().then(data => {
-        return Promise.resolve(data);
-      });
-    });
+    .then(response => assessResponseStatus(response));
 
   return from(request);
 };
 
 export const API = {
-  fetchTodoList: (store) => {
-    const url = 'http://localhost:3000/api/items';
+  fetchTodoList: (state$) => {
+    const url = `${BASE_URL}/`;
     return fetchHelper(url, 'GET');
   },
 
-  updateItem: (store) => {
-    const url = 'http://localhost:3000/api/items';
+  updateItem: (state$, id) => {
+    const url = ``;
     return fetchHelper(url, 'POST');
   },
 
-  deleteItem: (store) => {
-    const url = 'http://localhost:3000/api/items';
+  deleteItem: (state$, id) => {
+    const url = ``;
     return fetchHelper(url, 'POST');
   },
 
-  createItem: (store) => {
-    const url = 'http://localhost:3000/api/items';
+  createItem: (state$) => {
+    const url = ``;
     return fetchHelper(url, 'POST');
   }
 };
