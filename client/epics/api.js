@@ -30,17 +30,29 @@ export const API = {
   },
 
   updateItem: (state$, id) => {
-    const url = ``;
+    const url = `${BASE_URL}/${id}/update`,
+      form = state$.value.todoList.selectedItemForm,
+      data = {
+        name: form.name,
+        description: form.description,
+        dueBy: form.dueBy
+      };
     return fetchHelper(url, 'POST');
   },
 
   deleteItem: (state$, id) => {
-    const url = ``;
-    return fetchHelper(url, 'POST');
+    const url = `${BASE_URL}/${id}/remove`;
+    return fetchHelper(url, 'DELETE');
   },
 
   createItem: (state$) => {
-    const url = ``;
-    return fetchHelper(url, 'POST');
+    const url = `${BASE_URL}/create`,
+      form = state$.value.todoList.addItemForm,
+      data = {
+        name: form.name,
+        description: form.description,
+        dueBy: form.dueBy
+      };
+    return fetchHelper(url, 'POST', data);
   }
 };

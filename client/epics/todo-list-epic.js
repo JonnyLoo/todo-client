@@ -1,5 +1,5 @@
 import {switchMap, mergeMap, catchError} from 'rxjs/operators';
-import {Observable, empty, of} from 'rxjs';
+import {empty, of, concat} from 'rxjs';
 import {ofType} from 'redux-observable';
 import {
   GET_TODO_LIST,
@@ -13,9 +13,11 @@ import {
   DELETE_ITEM_ERROR,
   CREATE_ITEM,
   CREATE_ITEM_SUCCESS,
-  CREATE_ITEM_ERROR
+  CREATE_ITEM_ERROR,
+  CLEAR_ADD_ITEM_FORM
 } from '../constants/action-types';
 import {API} from './api';
+import {updateItem, removeItem, insertItem} from '../utils/list-operations';
 
 export const getTodoListEpic = (action$, state$) =>
   action$.pipe(
@@ -36,11 +38,16 @@ export const getTodoListEpic = (action$, state$) =>
 export const updateItemEpic = (action$, state$) =>
   action$.pipe(
     ofType(UPDATE_ITEM),
-    switchMap(() => {
-      return API.updateItem(state$)
+    switchMap(({ payload }) => {
+      const id = payload;
+      return API.updateItem(state$, id)
         .pipe(
           mergeMap(result => {
-            return of({ type: UPDATE_ITEM_SUCCESS, payload: result });
+            const form = state$.value.todoList.selectedItemForm,
+              items = state$.value.todoList.items,
+              newItems = updateItem(items, id, form)
+
+            return of({ type: UPDATE_ITEM_SUCCESS, payload: newItems });
           }),
           catchError(error => {
             return of({ type: UPDATE_ITEM_ERROR, payload: error });
@@ -52,11 +59,16 @@ export const updateItemEpic = (action$, state$) =>
 export const deleteItemEpic = (action$, state$) =>
   action$.pipe(
     ofType(DELETE_ITEM),
-    switchMap(() => {
-      return API.deleteItem(state$)
+    switchMap(({ payload }) => {
+      const id = payload;
+      return API.deleteItem(state$, id)
         .pipe(
           mergeMap(result => {
-            return of({ type: DELETE_ITEM_SUCCESS, payload: result });
+            const items = state$.value.todoList.items,
+              deleteIndex = items.findIndex(item => item._id === id),
+              newItems = removeItem(items, deleteIndex)
+
+            return of({ type: DELETE_ITEM_SUCCESS, payload: newItems });
           }),
           catchError(error => {
             return of({ type: DELETE_ITEM_ERROR, payload: error });
@@ -69,10 +81,16 @@ export const createItemEpic = (action$, state$) =>
   action$.pipe(
     ofType(CREATE_ITEM),
     switchMap(() => {
-      return API.creteItem(state$)
+      return API.createItem(state$)
         .pipe(
           mergeMap(result => {
-            return of({ type: CREATE_ITEM_SUCCESS, payload: result });
+            const items = state$.value.todoList.items,
+              newItems = insertItem(items, result);
+
+              return concat(
+                of({ type: CREATE_ITEM_SUCCESS, payload: newItems }),
+                of({ type: CLEAR_ADD_ITEM_FORM })
+              );
           }),
           catchError(error => {
             return of({ type: CREATE_ITEM_ERROR, payload: error });

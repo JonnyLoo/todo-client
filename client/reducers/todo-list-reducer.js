@@ -5,7 +5,13 @@ export const todoList = {
   name: '',
   items: [],
   isFetching: false,
-  error: null
+  error: null,
+  selectedItemForm: {},
+  addItemForm: {
+    name: '',
+    description: '',
+    dueBy: ''
+  }
 };
 
 export default createReducer(todoList, {
@@ -34,57 +40,97 @@ export default createReducer(todoList, {
     };
   },
 
-  [ActionTypes.UPDATE_ITEM]: (state) => {
+  [ActionTypes.UPDATE_ITEM_SUCCESS]: (state, payload) => {
+    return {
+      ...state,
+      items: payload
+    };
+  },
+
+  [ActionTypes.UPDATE_ITEM_ERROR]: (state, payload) => {
+    return {
+      ...state,
+      error: payload
+    };
+  },
+
+  [ActionTypes.DELETE_ITEM_SUCCESS]: (state, payload) => {
+    return {
+      ...state,
+      items: payload
+    };
+  },
+
+  [ActionTypes.DELETE_ITEM_ERROR]: (state, payload) => {
+    return {
+      ...state,
+      error: payload
+    };
+  },
+
+  [ActionTypes.CREATE_ITEM_SUCCESS]: (state, payload) => {
+    return {
+      ...state,
+      items: payload
+    };
+  },
+
+  [ActionTypes.CREATE_ITEM_ERROR]: (state, payload) => {
+    return {
+      ...state,
+      error: payload
+    };
+  },
+
+  [ActionTypes.COMPLETE_ITEM]: (state) => {
     return {
       ...state
     };
   },
 
-  [ActionTypes.UPDATE_ITEM_SUCCESS]: (state) => {
+  [ActionTypes.COMPLETE_ITEM_SUCCESS]: (state) => {
     return {
       ...state
     };
   },
 
-  [ActionTypes.UPDATE_ITEM_ERROR]: (state) => {
+  [ActionTypes.COMPLETE_ITEM_ERROR]: (state) => {
     return {
       ...state
     };
   },
 
-  [ActionTypes.DELETE_ITEM]: (state) => {
+  [ActionTypes.SELECT_ITEM]: (state) => {
     return {
       ...state
     };
   },
 
-  [ActionTypes.DELETE_ITEM_SUCCESS]: (state) => {
+  [ActionTypes.UPDATE_SELECTED_ITEM_FORM]: (state) => {
     return {
       ...state
     };
   },
 
-  [ActionTypes.DELETE_ITEM_ERROR]: (state) => {
+  [ActionTypes.CLEAR_SELECTED_ITEM_FORM]: (state) => {
     return {
       ...state
     };
   },
 
-  [ActionTypes.CREATE_ITEM]: (state) => {
+  [ActionTypes.UPDATE_ADD_ITEM_FORM]: (state, payload) => {
     return {
-      ...state
+      ...state,
+      addItemForm: Object.assign({}, state.addItemForm, {
+        [payload.field]: payload.update
+      })
     };
   },
 
-  [ActionTypes.CREATE_ITEM_SUCCESS]: (state) => {
+  [ActionTypes.CLEAR_ADD_ITEM_FORM]: (state) => {
     return {
-      ...state
+      ...state,
+      addItemForm: todoList.addItemForm
     };
   },
-
-  [ActionTypes.CREATE_ITEM_ERROR]: (state) => {
-    return {
-      ...state
-    };
-  }
 });

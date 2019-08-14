@@ -1,11 +1,13 @@
+import status from '../constants/response-statuses';
+
 export const assessResponseStatus = (response) => {
-  if(response.status === 200) {
+  if(status.OK.includes(response.status)) {
     return response.json().then(data => {
       return Promise.resolve(data);
     });
   }
 
-  if(response.status === 500) {
+  if(status.BAD.includes(response.status)) {
     return Promise.reject(new Error('oops something went wrong'));
   }
 
