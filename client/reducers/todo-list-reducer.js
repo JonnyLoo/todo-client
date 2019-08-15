@@ -18,7 +18,8 @@ export const todoList = {
     name: '',
     description: '',
     dueBy: ''
-  }
+  },
+  filter: ''
 };
 
 export default createReducer(todoList, {
@@ -128,6 +129,13 @@ export default createReducer(todoList, {
     return {
       ...state,
       addItemForm: todoList.addItemForm
+    };
+  },
+
+  [ActionTypes.APPLY_FILTER]: (state, payload) => {
+    return {
+      ...state,
+      filter: payload
     };
   },
 });

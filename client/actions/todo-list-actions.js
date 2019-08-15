@@ -7,7 +7,8 @@ import {
   SELECT_ITEM,
   UPDATE_VIEW_ITEM_FORM,
   CLEAR_VIEW_ITEM_FORM,
-  UPDATE_ADD_ITEM_FORM
+  UPDATE_ADD_ITEM_FORM,
+  APPLY_FILTER
 } from '../constants/action-types';
 
 export const getTodoList = () => {
@@ -41,6 +42,13 @@ export const selectItem = (item) => {
     dispatch({ type: CLEAR_VIEW_ITEM_FORM });
     dispatch({ type: SELECT_ITEM, payload: item });
   }
+}
+
+export const applyFilter = (filter) => {
+  return {
+    type: APPLY_FILTER,
+    payload: filter
+  };
 }
 
 export const updateForm = (form, field, update) => {

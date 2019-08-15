@@ -14,7 +14,12 @@ export class TextInput extends React.Component {
     return (
       <div className='txt-input'>
         <label className='txt-input-label'>{ this.props.label }</label>
-        <input className='txt-input-input' type='text' value={ this.props.value } onChange={ this.onChange.bind(this) } />
+        <input
+          className='txt-input-input'
+          type={ this.props.type && this.props.type === 'date' ? this.props.type : 'text'}
+          value={ this.props.value }
+          onChange={ this.onChange.bind(this) }
+        />
       </div>
     )
   }
@@ -24,6 +29,7 @@ TextInput.propTypes = {
   field: PropTypes.string,
   form: PropTypes.string,
   label: PropTypes.string,
+  type: PropTypes.string,
   updateForm: PropTypes.func,
   value: PropTypes.string
 }

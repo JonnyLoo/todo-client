@@ -10,7 +10,6 @@ export class AddItemWidget extends React.Component {
   }
 
   render() {
-    const { name, description, dueBy } = this.props.addItemForm;
     return (
       <div className='add-item-widget'>
         <TextInput
@@ -31,6 +30,7 @@ export class AddItemWidget extends React.Component {
           field={ 'dueBy' }
           form={ 'addItem' }
           label={ 'Due Date' }
+          type={ 'date' }
           updateForm={ this.props.updateForm }
           value={ this.props.addItemForm.dueBy }
         />

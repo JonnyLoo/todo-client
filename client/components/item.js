@@ -8,10 +8,12 @@ export class Item extends React.Component {
   }
 
   render() {
+    const date = new Date(this.props.item.dueBy),
+     dateString = `${ date.getUTCMonth() + 1 }/${ date.getUTCDate() }/${ date.getUTCFullYear() }`
     return (
       <div className='item-row'>
         <div className='item-name'>{ this.props.item.name }</div>
-        <div className='item-due'>{ (new Date(this.props.item.dueBy)).toLocaleString() }</div>
+        <div className='item-due'>{ dateString }</div>
         <Button
           label={ 'delete' }
           customOnClick={ this.props.deleteItem.bind(this, this.props.item._id) }

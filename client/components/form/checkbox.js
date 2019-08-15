@@ -11,7 +11,6 @@ export class Checkbox extends React.Component {
   }
 
   render() {
-    console.log(this.props.checked);
     return (
       <div className='checkbox-input'>
         <label className='checkbox-input-label'>{ this.props.label }</label>

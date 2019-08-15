@@ -17,9 +17,6 @@ export class TodoList extends React.Component {
   }
 
   render() {
-    // on left, add-item-widget and item-details-widget
-    // item-details-widget displays message 'click on an item to view it's details'
-    // right will be the list of items
     if (this.props.isFetching) {
       return (<div className='center'>{ 'LOADING...' }</div>);
     }
@@ -37,8 +34,9 @@ export class TodoList extends React.Component {
           viewItemForm={ this.props.viewItemForm }
         />
         <ItemList
-          items={ this.props.items }
           deleteItem={ this.props.deleteItem }
+          filter={ this.props.filter }
+          items={ this.props.items }
           selectItem={ this.props.selectItem }
         />
       </div>
@@ -53,7 +51,8 @@ const mapStateToProps = (state) => {
     isFetching: state.todoList.isFetching,
     error: state.todoList.error,
     viewItemForm: state.todoList.viewItemForm,
-    addItemForm: state.todoList.addItemForm
+    addItemForm: state.todoList.addItemForm,
+    filter: state.todoList.filter
   };
 };
 

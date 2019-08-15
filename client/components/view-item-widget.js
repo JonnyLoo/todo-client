@@ -31,6 +31,7 @@ export class ViewItemWidget extends React.Component {
           field={ 'dueBy' }
           form={ 'viewItem' }
           label={ 'Due Date' }
+          type={ 'date' }
           updateForm={ this.props.updateForm }
           value={ this.props.viewItemForm.dueBy }
         />
