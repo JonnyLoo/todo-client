@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node app.js",
     "dev": "cross-env NODE_ENV=dev nodemon --watch web app.js",
-    "build": "webpack --config webpack.config.dev.js"
+    "build": "webpack --config webpack.config.dev.js",
+    "lint": "./node_modules/.bin/eslint .",
+    "lint:fix": "./node_modules/.bin/eslint --fix ."
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "express": "^4.16.4",
     "isomorphic-fetch": "^2.2.1",
     "path": "^0.12.7",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
@@ -23,7 +26,9 @@
     "redux-thunk": "^2.3.0",
     "request": "^2.88.0",
     "rxjs": "^6.5.2",
-    "rxjs-compat": "^6.5.2"
+    "rxjs-compat": "^6.5.2",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -32,13 +37,17 @@
     "babel-loader": "^8.0.5",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.0",
     "redux-immutable-state-invariant": "^2.1.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2",
     "webpack-dev-middleware": "^3.6.2",
     "webpack-hot-middleware": "^2.24.4"
   }

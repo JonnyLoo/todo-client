@@ -15,10 +15,10 @@ export class ItemList extends React.Component {
   }
 
   getLabel(filter) {
-    if (filter === 'overdue') return (<label className='tab-label'>{ 'Overdue' }</label>);
-    if (filter === 'completed') return (<label className='tab-label'>{ 'Completed' }</label>);
+    if (filter === 'overdue') return (<label className='tab-label'>Overdue</label>);
+    if (filter === 'completed') return (<label className='tab-label'>Completed</label>);
 
-    return (<label className='tab-label'>{ 'Todo' }</label>);
+    return (<label className='tab-label'>Todo</label>);
   }
 
   render() {
@@ -26,16 +26,12 @@ export class ItemList extends React.Component {
       return (
         <div className='item-list'>
           <div className='due-today'>
-            <label className='tab-label'>{ 'Today' }</label>
-            { filter(this.props.items, 'today').map(item =>
-              <Item key={ item._id } item={ item } deleteItem={ this.props.deleteItem } selectItem={ this.props.selectItem }/>
-            )}
+            <label className='tab-label'>Today</label>
+            { filter(this.props.items, 'today').map((item) => <Item key={item._id} item={item} deleteItem={this.props.deleteItem} selectItem={this.props.selectItem} />)}
           </div>
           <div className='due-tomo'>
-            <label className='tab-label'>{ 'Tomorrow' }</label>
-            { filter(this.props.items, 'tomorrow').map(item =>
-              <Item key={ item._id } item={ item } deleteItem={ this.props.deleteItem } selectItem={ this.props.selectItem }/>
-            )}
+            <label className='tab-label'>Tomorrow</label>
+            { filter(this.props.items, 'tomorrow').map((item) => <Item key={item._id} item={item} deleteItem={this.props.deleteItem} selectItem={this.props.selectItem} />)}
           </div>
         </div>
       );
@@ -44,26 +40,25 @@ export class ItemList extends React.Component {
     return (
       <div className='item-list'>
         { this.getLabel(this.props.filter) }
-        { filter(this.props.items, this.props.filter).map(item => {
-            let type = '';
-            const due = convertDate(item.dueBy),
-              now = new Date();
-            now.setHours(0, 0, 0, 0);
+        { filter(this.props.items, this.props.filter).map((item) => {
+          let type = '';
+          const due = convertDate(item.dueBy);
+          const now = new Date();
+          now.setHours(0, 0, 0, 0);
 
-            if (isOverdue(due, now)) type = 'overdue';
-            if (isDueToday(due, now) || isDueTomorrow(due, now)) type = 'soon';
+          if (isOverdue(due, now)) type = 'overdue';
+          if (isDueToday(due, now) || isDueTomorrow(due, now)) type = 'soon';
 
-            return (
-              <Item
-                key={ item._id }
-                deleteItem={ this.props.deleteItem }
-                item={ item }
-                selectItem={ this.props.selectItem }
-                type={ type }
-              />
-            );
-          }
-        )}
+          return (
+            <Item
+              key={item._id}
+              deleteItem={this.props.deleteItem}
+              item={item}
+              selectItem={this.props.selectItem}
+              type={type}
+            />
+          );
+        })}
       </div>
     );
   }
@@ -74,4 +69,4 @@ ItemList.propTypes = {
   filter: PropTypes.string,
   items: PropTypes.array,
   selectItem: PropTypes.func
-}
+};

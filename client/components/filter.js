@@ -11,24 +11,24 @@ export class Filter extends React.Component {
     return (
       <div className='filter-tabs'>
         <FilterTab
-          applyFilter={ this.props.applyFilter }
-          filter={ 'default' }
-          name={ 'All' }
+          applyFilter={this.props.applyFilter}
+          filter='default'
+          name='All'
         />
         <FilterTab
-          applyFilter={ this.props.applyFilter }
-          filter={ 'soon' }
-          name={ 'Due soon' }
+          applyFilter={this.props.applyFilter}
+          filter='soon'
+          name='Due soon'
         />
         <FilterTab
-          applyFilter={ this.props.applyFilter }
-          filter={ 'overdue' }
-          name={ 'Overdue' }
+          applyFilter={this.props.applyFilter}
+          filter='overdue'
+          name='Overdue'
         />
         <FilterTab
-          applyFilter={ this.props.applyFilter }
-          filter={ 'completed' }
-          name={ 'Completed' }
+          applyFilter={this.props.applyFilter}
+          filter='completed'
+          name='Completed'
         />
       </div>
     );
@@ -37,4 +37,4 @@ export class Filter extends React.Component {
 
 Filter.propTypes = {
   applyFilter: PropTypes.func
-}
+};

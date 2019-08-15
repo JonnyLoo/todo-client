@@ -12,7 +12,7 @@ export class FilterTab extends React.Component {
 
   render() {
     return (
-      <div className='filter-tab' onClick={ this.onClick.bind(this) }>{ this.props.name }</div>
+      <div className='filter-tab' onClick={this.onClick.bind(this)}>{ this.props.name }</div>
     );
   }
 }
@@ -21,4 +21,4 @@ FilterTab.propTypes = {
   applyFilter: PropTypes.func,
   filter: PropTypes.string,
   name: PropTypes.string
-}
+};

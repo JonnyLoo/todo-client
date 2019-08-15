@@ -7,6 +7,6 @@ const status = {
   BAD: [
     500
   ]
-}
+};
 
 export default status;

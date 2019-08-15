@@ -12,49 +12,51 @@ export class ViewItemWidget extends React.Component {
 
   render() {
     if (!this.props.viewItemForm.isSelected) {
-      return <div className='view-item-widget no-item-selected'>
-        { 'Select an item to view it\'s details here' }
-      </div>
+      return (
+        <div className='view-item-widget no-item-selected'>
+          { 'Select an item to view it\'s details here' }
+        </div>
+      );
     }
 
     return (
       <div className='view-item-widget'>
-        <label className='view-item-label'>{ 'Item Details' }</label>
+        <label className='view-item-label'>Item Details</label>
         <TextInput
-          field={ 'name' }
-          form={ 'viewItem' }
-          label={ 'Name' }
-          updateForm={ this.props.updateForm }
-          value={ this.props.viewItemForm.name }
+          field='name'
+          form='viewItem'
+          label='Name'
+          updateForm={this.props.updateForm}
+          value={this.props.viewItemForm.name}
         />
         <TextInput
-          field={ 'description' }
-          form={ 'viewItem' }
-          label={ 'Description' }
-          updateForm={ this.props.updateForm }
-          value={ this.props.viewItemForm.description }
+          field='description'
+          form='viewItem'
+          label='Description'
+          updateForm={this.props.updateForm}
+          value={this.props.viewItemForm.description}
         />
         <TextInput
-          field={ 'dueBy' }
-          form={ 'viewItem' }
-          label={ 'Due Date' }
-          type={ 'date' }
-          updateForm={ this.props.updateForm }
-          value={ this.props.viewItemForm.dueBy }
+          field='dueBy'
+          form='viewItem'
+          label='Due Date'
+          type='date'
+          updateForm={this.props.updateForm}
+          value={this.props.viewItemForm.dueBy}
         />
         <Checkbox
-          checked={ this.props.viewItemForm.completed }
-          field={ 'completed' }
-          form={ 'viewItem' }
-          label={ 'Done' }
-          updateForm={ this.props.updateForm }
+          checked={this.props.viewItemForm.completed}
+          field='completed'
+          form='viewItem'
+          label='Done'
+          updateForm={this.props.updateForm}
         />
         <Button
-          label={ 'Save' }
-          customOnClick={ this.props.updateItem.bind(this, this.props.viewItemForm._id) }
+          label='Save'
+          customOnClick={this.props.updateItem.bind(this, this.props.viewItemForm._id)}
         />
       </div>
-    )
+    );
   }
 }
 
@@ -62,4 +64,4 @@ ViewItemWidget.propTypes = {
   updateForm: PropTypes.func,
   updateItem: PropTypes.func,
   viewItemForm: PropTypes.object
-}
+};

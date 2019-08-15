@@ -1,7 +1,7 @@
-import {createStore, compose, applyMiddleware} from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunkMiddleware from 'redux-thunk';
-import {createEpicMiddleware} from 'redux-observable';
+import { createEpicMiddleware } from 'redux-observable';
 import rootReducer from './reducers/root-reducer';
 import rootEpic from './epics/root-epic';
 
@@ -29,4 +29,4 @@ export default (initialState) => {
   }
 
   return store;
-}
+};

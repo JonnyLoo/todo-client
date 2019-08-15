@@ -14,9 +14,9 @@ export class Checkbox extends React.Component {
     return (
       <div className='checkbox'>
         <div className='checkbox-label'>{ this.props.label }</div>
-        <input className='checkbox-input' type='checkbox' checked={ this.props.checked } onChange={ this.onChange.bind(this) } />
+        <input className='checkbox-input' type='checkbox' checked={this.props.checked} onChange={this.onChange.bind(this)} />
       </div>
-    )
+    );
   }
 }
 
@@ -26,4 +26,4 @@ Checkbox.propTypes = {
   form: PropTypes.string,
   label: PropTypes.string,
   updateForm: PropTypes.func
-}
+};

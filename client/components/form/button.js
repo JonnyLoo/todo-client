@@ -14,7 +14,9 @@ export class Button extends React.Component {
 
   render() {
     return (
-      <button className={ 'btn' } onClick={ this.onClick.bind(this) }> { this.props.label } </button>
+      <button className='btn' onClick={this.onClick.bind(this)}>
+        { this.props.label }
+      </button>
     );
   }
 }
@@ -22,4 +24,4 @@ export class Button extends React.Component {
 Button.propTypes = {
   customOnClick: PropTypes.func,
   label: PropTypes.string
-}
+};

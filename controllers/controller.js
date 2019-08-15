@@ -1,4 +1,5 @@
 const request = require('request');
+
 const BASE_URL = 'http://localhost:3001/api/item';
 
 const getList = (req, res) => {
@@ -8,11 +9,10 @@ const getList = (req, res) => {
   (err, response, body) => {
     if (err) {
       return res.status(500).send('oops there was an error');
-    } else if (response.statusCode === 500) {
+    } if (response.statusCode === 500) {
       return res.status(500).send('oops there was a server error');
-    } else {
-      return res.status(200).send(JSON.parse(body).todoList);
     }
+    return res.status(200).send(JSON.parse(body).todoList);
   });
 };
 
@@ -25,11 +25,10 @@ const updateItem = (req, res) => {
   (err, response, body) => {
     if (err) {
       return res.status(500).send('oops there was an error');
-    } else if (response.statusCode === 500) {
+    } if (response.statusCode === 500) {
       return res.status(500).send('oops there was a server error');
-    } else {
-      return res.status(200).send(body);
     }
+    return res.status(200).send(body);
   });
 };
 
@@ -40,11 +39,10 @@ const removeItem = (req, res) => {
   (err, response, body) => {
     if (err) {
       return res.status(500).send('oops there was an error');
-    } else if (response.statusCode === 500) {
+    } if (response.statusCode === 500) {
       return res.status(500).send('oops there was a server error');
-    } else {
-      return res.status(200).send(body);
     }
+    return res.status(200).send(body);
   });
 };
 
@@ -57,11 +55,10 @@ const createItem = (req, res) => {
   (err, response, body) => {
     if (err) {
       return res.status(500).send('oops there was an error');
-    } else if (response.statusCode === 500) {
+    } if (response.statusCode === 500) {
       return res.status(500).send('oops there was a server error');
-    } else {
-      return res.status(201).send(body.item);
     }
+    return res.status(201).send(body.item);
   });
 };
 
