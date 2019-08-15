@@ -31,13 +31,14 @@ export const API = {
 
   updateItem: (state$, id) => {
     const url = `${BASE_URL}/${id}/update`,
-      form = state$.value.todoList.selectedItemForm,
+      form = state$.value.todoList.viewItemForm,
       data = {
         name: form.name,
         description: form.description,
-        dueBy: form.dueBy
+        dueBy: form.dueBy,
+        completed: form.completed
       };
-    return fetchHelper(url, 'POST');
+    return fetchHelper(url, 'POST', data);
   },
 
   deleteItem: (state$, id) => {

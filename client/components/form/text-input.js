@@ -22,7 +22,7 @@ export class TextInput extends React.Component {
 
 TextInput.propTypes = {
   field: PropTypes.string,
-  form: PropTypes.object,
+  form: PropTypes.string,
   label: PropTypes.string,
   updateForm: PropTypes.func,
   value: PropTypes.string

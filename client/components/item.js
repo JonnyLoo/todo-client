@@ -16,6 +16,10 @@ export class Item extends React.Component {
           label={ 'delete' }
           customOnClick={ this.props.deleteItem.bind(this, this.props.item._id) }
         />
+        <Button
+          label={ 'view' }
+          customOnClick={ this.props.selectItem.bind(this, this.props.item) }
+        />
       </div>
     );
   }
@@ -23,5 +27,6 @@ export class Item extends React.Component {
 
 Item.propTypes = {
   deleteItem: PropTypes.func,
-  item: PropTypes.object
+  item: PropTypes.object,
+  selectItem: PropTypes.func
 }

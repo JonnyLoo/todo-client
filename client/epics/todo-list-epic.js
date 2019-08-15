@@ -14,7 +14,8 @@ import {
   CREATE_ITEM,
   CREATE_ITEM_SUCCESS,
   CREATE_ITEM_ERROR,
-  CLEAR_ADD_ITEM_FORM
+  CLEAR_ADD_ITEM_FORM,
+  CLEAR_VIEW_ITEM_FORM
 } from '../constants/action-types';
 import {API} from './api';
 import {updateItem, removeItem, insertItem} from '../utils/list-operations';
@@ -43,7 +44,7 @@ export const updateItemEpic = (action$, state$) =>
       return API.updateItem(state$, id)
         .pipe(
           mergeMap(result => {
-            const form = state$.value.todoList.selectedItemForm,
+            const form = state$.value.todoList.viewItemForm,
               items = state$.value.todoList.items,
               newItems = updateItem(items, id, form)
 
@@ -68,7 +69,10 @@ export const deleteItemEpic = (action$, state$) =>
               deleteIndex = items.findIndex(item => item._id === id),
               newItems = removeItem(items, deleteIndex)
 
-            return of({ type: DELETE_ITEM_SUCCESS, payload: newItems });
+            return concat(
+              of({ type: DELETE_ITEM_SUCCESS, payload: newItems }),
+              of({ type: CLEAR_VIEW_ITEM_FORM })
+            );
           }),
           catchError(error => {
             return of({ type: DELETE_ITEM_ERROR, payload: error });

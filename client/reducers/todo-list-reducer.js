@@ -6,7 +6,14 @@ export const todoList = {
   items: [],
   isFetching: false,
   error: null,
-  selectedItemForm: {},
+  viewItemForm: {
+    id: '',
+    name: '',
+    description: '',
+    dueBy: '',
+    completed: false,
+    isSelected: false
+  },
   addItemForm: {
     name: '',
     description: '',
@@ -82,39 +89,29 @@ export default createReducer(todoList, {
     };
   },
 
-  [ActionTypes.COMPLETE_ITEM]: (state) => {
+  [ActionTypes.SELECT_ITEM]: (state, payload) => {
     return {
-      ...state
+      ...state,
+      viewItemForm: Object.assign({}, state.viewItemForm, {
+        ...payload,
+        isSelected: true
+      })
     };
   },
 
-  [ActionTypes.COMPLETE_ITEM_SUCCESS]: (state) => {
+  [ActionTypes.UPDATE_VIEW_ITEM_FORM]: (state, payload) => {
     return {
-      ...state
+      ...state,
+      viewItemForm: Object.assign({}, state.viewItemForm, {
+        [payload.field]: payload.update
+      })
     };
   },
 
-  [ActionTypes.COMPLETE_ITEM_ERROR]: (state) => {
+  [ActionTypes.CLEAR_VIEW_ITEM_FORM]: (state) => {
     return {
-      ...state
-    };
-  },
-
-  [ActionTypes.SELECT_ITEM]: (state) => {
-    return {
-      ...state
-    };
-  },
-
-  [ActionTypes.UPDATE_SELECTED_ITEM_FORM]: (state) => {
-    return {
-      ...state
-    };
-  },
-
-  [ActionTypes.CLEAR_SELECTED_ITEM_FORM]: (state) => {
-    return {
-      ...state
+      ...state,
+      viewItemForm: todoList.viewItemForm
     };
   },
 

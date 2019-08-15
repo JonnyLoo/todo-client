@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import * as TodoListActions from '../actions/todo-list-actions';
 import { ItemList } from './item-list';
 import { AddItemWidget } from './add-item-widget';
+import { ViewItemWidget } from './view-item-widget';
 
 export class TodoList extends React.Component {
   constructor(props) {
@@ -30,9 +31,15 @@ export class TodoList extends React.Component {
           createItem={ this.props.createItem }
           updateForm={ this.props.updateForm }
         />
+        <ViewItemWidget
+          updateForm={ this.props.updateForm }
+          updateItem={ this.props.updateItem }
+          viewItemForm={ this.props.viewItemForm }
+        />
         <ItemList
           items={ this.props.items }
           deleteItem={ this.props.deleteItem }
+          selectItem={ this.props.selectItem }
         />
       </div>
     );
@@ -45,7 +52,7 @@ const mapStateToProps = (state) => {
     items: state.todoList.items,
     isFetching: state.todoList.isFetching,
     error: state.todoList.error,
-    selectedItemForm: state.todoList.selectedItemForm,
+    viewItemForm: state.todoList.viewItemForm,
     addItemForm: state.todoList.addItemForm
   };
 };
@@ -65,7 +72,11 @@ TodoList.propTypes = {
   getTodoList: PropTypes.func,
   deleteItem: PropTypes.func,
   createItem: PropTypes.func,
-  updateForm: PropTypes.func
+  updateForm: PropTypes.func,
+  updateItem: PropTypes.func,
+  viewItemForm: PropTypes.object,
+  addItemForm: PropTypes.object,
+  selectItem: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

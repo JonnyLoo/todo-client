@@ -10,7 +10,9 @@ export class ItemList extends React.Component {
   render() {
     return (
       <div className='item-list'>
-        { this.props.items.map(item => <Item item={ item } deleteItem={ this.props.deleteItem }/>) }
+        { this.props.items.map(item =>
+          <Item key={ item._id } item={ item } deleteItem={ this.props.deleteItem } selectItem={ this.props.selectItem }/>
+        )}
       </div>
     );
   }
@@ -18,5 +20,6 @@ export class ItemList extends React.Component {
 
 ItemList.propTypes = {
   deleteItem: PropTypes.func,
-  items: PropTypes.array
+  items: PropTypes.array,
+  selectItem: PropTypes.func
 }

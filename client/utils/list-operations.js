@@ -1,4 +1,5 @@
 export const updateItem = (array, id, update) => {
+  console.log('updating', id, update);
   const newArray = array.map(item => {
     if (item._id === id) {
       return {

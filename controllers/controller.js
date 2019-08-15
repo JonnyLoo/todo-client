@@ -19,7 +19,8 @@ const getList = (req, res) => {
 const updateItem = (req, res) => {
   request.post({
     url: `${BASE_URL}/${req.params._id}/update`,
-    formData: req.body
+    body: req.body,
+    json: true
   },
   (err, response, body) => {
     if (err) {
@@ -27,7 +28,7 @@ const updateItem = (req, res) => {
     } else if (response.statusCode === 500) {
       return res.status(500).send('oops there was a server error');
     } else {
-      return res.status(200).send(JSON.parse(body));
+      return res.status(200).send(body);
     }
   });
 };
