@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Item } from './item';
+import { filter } from '../utils/filter-utils';
 import {
-  filter,
   convertDate,
   isOverdue,
   isDueToday,
   isDueTomorrow
-} from '../utils/filter-utils';
+} from '../utils/date-utils';
 
 export class ItemList extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export class ItemList extends React.Component {
     if (filter === 'overdue') return (<label className='tab-label'>{ 'Overdue' }</label>);
     if (filter === 'completed') return (<label className='tab-label'>{ 'Completed' }</label>);
 
-    return (<label className='tab-label'>{ 'All' }</label>);
+    return (<label className='tab-label'>{ 'Todo' }</label>);
   }
 
   render() {
@@ -51,7 +51,7 @@ export class ItemList extends React.Component {
             now.setHours(0, 0, 0, 0);
 
             if (isOverdue(due, now)) type = 'overdue';
-            if (isDueToday(due, now) || isDueTomorrow(due, now)) type = 'overdue';
+            if (isDueToday(due, now) || isDueTomorrow(due, now)) type = 'soon';
 
             return (
               <Item

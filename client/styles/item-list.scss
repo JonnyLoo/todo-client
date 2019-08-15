@@ -1,0 +1,28 @@
+.item-list {
+  background: #324242;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  padding: 2rem;
+  padding-top: 50px;
+  right: 15%;
+  left: 35%;
+  top: 0;
+  bottom: 0;
+  border: solid #FAFAFA .05rem;
+
+  .due-today,
+  .due-tomo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .due-today {
+    margin-bottom: 50px;
+  }
+}

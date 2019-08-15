@@ -1,0 +1,21 @@
+.item-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: solid #FAFAFA .05rem;
+  width: 100%;
+  height: 50px;
+
+  .item-name {
+    margin: auto;
+    margin-left: 0;
+  }
+
+  .item-due {
+    margin: auto;
+  }
+
+  .btn {
+    margin-left: 2rem;
+  }
+}

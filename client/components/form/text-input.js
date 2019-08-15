@@ -13,12 +13,13 @@ export class TextInput extends React.Component {
   render() {
     return (
       <div className='txt-input'>
-        <label className='txt-input-label'>{ this.props.label }</label>
+        <div className='txt-input-label'>{ this.props.label }</div>
         <input
           className='txt-input-input'
           type={ this.props.type && this.props.type === 'date' ? this.props.type : 'text'}
           value={ this.props.value }
           onChange={ this.onChange.bind(this) }
+          placeholder={ this.props.label }
         />
       </div>
     )

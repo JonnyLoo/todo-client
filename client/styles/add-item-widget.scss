@@ -1,0 +1,17 @@
+.add-item-widget {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  left: 0;
+  right: 65%;
+  top: 0;
+  bottom: 55%;
+  padding: 3rem;
+  border: solid #FAFAFA .05rem;
+
+  .btn {
+    align-self: flex-end;
+  }
+}

@@ -11,8 +11,15 @@ export class ViewItemWidget extends React.Component {
   }
 
   render() {
+    if (!this.props.viewItemForm.isSelected) {
+      return <div className='view-item-widget no-item-selected'>
+        { 'Select an item to view it\'s details here' }
+      </div>
+    }
+
     return (
       <div className='view-item-widget'>
+        <label className='view-item-label'>{ 'Item Details' }</label>
         <TextInput
           field={ 'name' }
           form={ 'viewItem' }
@@ -39,7 +46,7 @@ export class ViewItemWidget extends React.Component {
           checked={ this.props.viewItemForm.completed }
           field={ 'completed' }
           form={ 'viewItem' }
-          label={ 'Completed?' }
+          label={ 'Done' }
           updateForm={ this.props.updateForm }
         />
         <Button

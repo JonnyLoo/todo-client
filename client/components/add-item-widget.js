@@ -12,6 +12,7 @@ export class AddItemWidget extends React.Component {
   render() {
     return (
       <div className='add-item-widget'>
+        <label className='add-item-label'>{ 'Add Item' }</label>
         <TextInput
           field={ 'name' }
           form={ 'addItem' }

@@ -12,9 +12,9 @@ export class Checkbox extends React.Component {
 
   render() {
     return (
-      <div className='checkbox-input'>
-        <label className='checkbox-input-label'>{ this.props.label }</label>
-        <input className='checkbox-input-input' type='checkbox' checked={ this.props.checked } onChange={ this.onChange.bind(this) } />
+      <div className='checkbox'>
+        <div className='checkbox-label'>{ this.props.label }</div>
+        <input className='checkbox-input' type='checkbox' checked={ this.props.checked } onChange={ this.onChange.bind(this) } />
       </div>
     )
   }

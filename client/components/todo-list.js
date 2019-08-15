@@ -22,7 +22,7 @@ export class TodoList extends React.Component {
       return (<div className='center'>{ 'LOADING...' }</div>);
     }
 
-    return (this.props.error ? <div className='center todo-list-error'>{ 'ERROR' }</div> :
+    return (this.props.error ? <div className='center'>{ 'ERROR' }</div> :
       <div className='todo-list'>
         <AddItemWidget
           addItemForm={ this.props.addItemForm }
