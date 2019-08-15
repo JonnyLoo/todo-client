@@ -9,9 +9,11 @@ export class Item extends React.Component {
 
   render() {
     const date = new Date(this.props.item.dueBy),
-     dateString = `${ date.getUTCMonth() + 1 }/${ date.getUTCDate() }/${ date.getUTCFullYear() }`
+     dateString = `${ date.getUTCMonth() + 1 }/${ date.getUTCDate() }/${ date.getUTCFullYear() }`,
+     cn = this.props.type ? `item-row ${this.props.type}` : 'item-row';
+
     return (
-      <div className='item-row'>
+      <div className={ cn }>
         <div className='item-name'>{ this.props.item.name }</div>
         <div className='item-due'>{ dateString }</div>
         <Button
@@ -30,5 +32,6 @@ export class Item extends React.Component {
 Item.propTypes = {
   deleteItem: PropTypes.func,
   item: PropTypes.object,
-  selectItem: PropTypes.func
+  selectItem: PropTypes.func,
+  type: PropTypes.string
 }

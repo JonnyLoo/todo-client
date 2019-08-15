@@ -6,6 +6,7 @@ import * as TodoListActions from '../actions/todo-list-actions';
 import { ItemList } from './item-list';
 import { AddItemWidget } from './add-item-widget';
 import { ViewItemWidget } from './view-item-widget';
+import { Filter } from './filter';
 
 export class TodoList extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export class TodoList extends React.Component {
       return (<div className='center'>{ 'LOADING...' }</div>);
     }
 
-    return (this.props.error ? <div className='todo-list-error'>{ 'ERROR' }</div> :
+    return (this.props.error ? <div className='center todo-list-error'>{ 'ERROR' }</div> :
       <div className='todo-list'>
         <AddItemWidget
           addItemForm={ this.props.addItemForm }
@@ -38,6 +39,9 @@ export class TodoList extends React.Component {
           filter={ this.props.filter }
           items={ this.props.items }
           selectItem={ this.props.selectItem }
+        />
+        <Filter
+          applyFilter={ this.props.applyFilter }
         />
       </div>
     );

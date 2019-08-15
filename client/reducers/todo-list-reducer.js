@@ -19,7 +19,7 @@ export const todoList = {
     description: '',
     dueBy: ''
   },
-  filter: ''
+  filter: 'default'
 };
 
 export default createReducer(todoList, {
