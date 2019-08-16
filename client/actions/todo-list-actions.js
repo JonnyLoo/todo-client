@@ -10,6 +10,8 @@ import {
   APPLY_FILTER
 } from '../constants/action-types';
 
+// file contains all the actions for the app
+// these actions get mapped to the props of our base TodoList component
 export const getTodoList = () => ({
   type: GET_TODO_LIST
 });

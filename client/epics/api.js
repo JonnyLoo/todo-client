@@ -2,8 +2,11 @@ import fetch from 'isomorphic-fetch';
 import { from } from 'rxjs';
 import { assessResponseStatus } from '../utils/request-utils';
 
+// could store this elsewhere
+// url could change depending on environment / where it's deployed
 const BASE_URL = 'http://localhost:3000/api/item';
 
+// setup request
 const fetchHelper = (url, method, body) => {
   const requestOptions = {
     method,
@@ -20,6 +23,7 @@ const fetchHelper = (url, method, body) => {
   const request = fetch(url, requestOptions)
     .then((response) => assessResponseStatus(response));
 
+  // return observable from the request
   return from(request);
 };
 

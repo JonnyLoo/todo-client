@@ -1,3 +1,4 @@
+// the full app
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -62,7 +63,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
   {
-
     ...TodoListActions
   },
   dispatch,

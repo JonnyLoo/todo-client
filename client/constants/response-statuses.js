@@ -1,3 +1,4 @@
+// keep track of response statuses
 const status = {
   OK: [
     200,

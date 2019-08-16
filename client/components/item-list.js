@@ -1,3 +1,4 @@
+// list of all the items
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Item } from './item';
@@ -14,6 +15,7 @@ export class ItemList extends React.Component {
     super(props);
   }
 
+  // gets different labels depending on the filter
   getLabel(filter) {
     if (filter === 'overdue') return (<label className='tab-label'>Overdue</label>);
     if (filter === 'completed') return (<label className='tab-label'>Completed</label>);
@@ -21,7 +23,11 @@ export class ItemList extends React.Component {
     return (<label className='tab-label'>Todo</label>);
   }
 
+  // this component has two forms, one where it's just one list
+  // the other is when the 'soon' filter is applied
+  // then it splits into two sections, one for today and one for tomorrow
   render() {
+    // maps each item to an Item component
     if (this.props.filter === 'soon') {
       return (
         <div className='item-list'>
@@ -42,10 +48,15 @@ export class ItemList extends React.Component {
         { this.getLabel(this.props.filter) }
         { filter(this.props.items, this.props.filter).map((item) => {
           let type = '';
+          // dates are not fun
           const due = convertDate(item.dueBy);
           const now = new Date();
+          // set time to the start of the day (12:00 AM)
           now.setHours(0, 0, 0, 0);
 
+          // determine the type of each item
+          // allows for visual indication of which item falls in which category
+          // mainly just useful for the main / non-filtered list
           if (isOverdue(due, now)) type = 'overdue';
           if (isDueToday(due, now) || isDueTomorrow(due, now)) type = 'soon';
 

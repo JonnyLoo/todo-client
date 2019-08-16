@@ -1,9 +1,9 @@
+// this widget lets you create new items and add them to the list
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from './form/button';
 import { TextInput } from './form/text-input';
 
-// create new items
 export class AddItemWidget extends React.Component {
   constructor(props) {
     super(props);

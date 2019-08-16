@@ -1,3 +1,5 @@
+// basic text input component
+// also doubles as the date input
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -7,6 +9,7 @@ export class TextInput extends React.Component {
   }
 
   onChange(evt) {
+    // keep state updated with value of this
     this.props.updateForm(this.props.form, this.props.field, evt.target.value);
   }
 

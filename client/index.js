@@ -7,6 +7,7 @@ import './styles/styles.scss';
 
 const store = configureStore();
 
+// keep track of store
 render(
   <Provider store={store}>
     <App />

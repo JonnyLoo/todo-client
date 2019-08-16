@@ -20,6 +20,7 @@ import {
 import { API } from './api';
 import { updateItem, removeItem, insertItem } from '../utils/list-operations';
 
+// chain observables to update state
 export const getTodoListEpic = (action$) => action$.pipe(
   ofType(GET_TODO_LIST),
   switchMap(() => API.fetchTodoList()
@@ -36,6 +37,8 @@ export const updateItemEpic = (action$, state$) => action$.pipe(
     return API.updateItem(state$, id)
       .pipe(
         mergeMap(() => {
+          // here we update the values directly in the state so we can match the database
+          // this way we dont have to request the data again each time something changes
           const form = state$.value.todoList.viewItemForm;
           const { items } = state$.value.todoList;
           const newItems = updateItem(items, id, form);

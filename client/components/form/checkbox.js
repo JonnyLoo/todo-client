@@ -1,3 +1,4 @@
+// basic checkbox component
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -7,6 +8,7 @@ export class Checkbox extends React.Component {
   }
 
   onChange(evt) {
+    // keep the state updated with the value of this
     this.props.updateForm(this.props.form, this.props.field, evt.target.checked);
   }
 

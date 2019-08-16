@@ -7,6 +7,7 @@ import rootEpic from './epics/root-epic';
 
 const epicMiddleware = createEpicMiddleware();
 
+// setup epic middleware and reducers
 export default (initialState) => {
   const middlewares = [
     reduxImmutableStateInvariant(),
@@ -21,6 +22,7 @@ export default (initialState) => {
 
   epicMiddleware.run(rootEpic);
 
+  // do hot reloading
   if (module.hot) {
     module.hot.accept('./reducers/root-reducer', () => {
       const nextReducer = require('./reducers/root-reducer').default;

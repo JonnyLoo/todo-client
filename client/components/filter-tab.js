@@ -7,6 +7,7 @@ export class FilterTab extends React.Component {
   }
 
   onClick() {
+    // set filter value in state
     this.props.applyFilter(this.props.filter);
   }
 

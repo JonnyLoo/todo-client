@@ -8,8 +8,10 @@ export class Item extends React.Component {
   }
 
   render() {
+    // turn the date into a more legible string
     const date = new Date(this.props.item.dueBy);
     const dateString = `${date.getUTCMonth() + 1}/${date.getUTCDate()}/${date.getUTCFullYear()}`;
+    // determine if there needs to be special indication on the item
     const cn = this.props.type ? `item-row ${this.props.type}` : 'item-row';
 
     return (

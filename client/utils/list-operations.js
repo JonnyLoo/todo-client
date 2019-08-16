@@ -1,3 +1,5 @@
+// operations as workaround to mutating the item list
+// all functions give back new lists containing the updated info
 export const updateItem = (array, id, update) => {
   const newArray = array.map((item) => {
     if (item._id === id) {

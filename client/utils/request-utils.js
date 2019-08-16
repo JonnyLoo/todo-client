@@ -1,5 +1,6 @@
 import status from '../constants/response-statuses';
 
+// just handles responses based on status in the epic api
 export const assessResponseStatus = (response) => {
   if (status.OK.includes(response.status)) {
     return response.json().then((data) => Promise.resolve(data));

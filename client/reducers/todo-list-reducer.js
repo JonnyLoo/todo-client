@@ -1,6 +1,7 @@
 import createReducer from './create-reducer';
 import * as ActionTypes from '../constants/action-types';
 
+// initial state of the app
 export const todoList = {
   name: '',
   items: [],

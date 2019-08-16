@@ -1,3 +1,4 @@
+// filters items based on selected tab
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FilterTab } from './filter-tab';

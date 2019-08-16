@@ -1,3 +1,4 @@
+// utility for filtering items
 import {
   convertDate,
   isOverdue,
@@ -5,6 +6,7 @@ import {
   isDueTomorrow
 } from './date-utils';
 
+// map of filter functions
 const filterMap = {
   default: () => (item) => !item.completed,
   completed: () => (item) => item.completed,
@@ -20,7 +22,9 @@ const filterMap = {
 };
 
 export const filter = (items, selectedFilter) => {
+  // could do more checking to make sure filter is valid
   const f = selectedFilter || 'default';
+  // weird date stuff again
   const d = new Date();
   d.setHours(0, 0, 0, 0);
   return items.filter(filterMap[f](d));

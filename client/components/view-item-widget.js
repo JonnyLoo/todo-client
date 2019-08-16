@@ -11,6 +11,7 @@ export class ViewItemWidget extends React.Component {
   }
 
   render() {
+    // if nothing is selected then display a message
     if (!this.props.viewItemForm.isSelected) {
       return (
         <div className='view-item-widget no-item-selected'>
