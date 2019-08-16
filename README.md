@@ -1,4 +1,4 @@
-# todo-client
+# todo-ui
 
 ```
 npm i

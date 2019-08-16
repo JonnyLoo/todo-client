@@ -69,19 +69,19 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
 );
 
 TodoList.propTypes = {
-  items: PropTypes.array,
-  getTodoList: PropTypes.func,
-  deleteItem: PropTypes.func,
-  createItem: PropTypes.func,
-  updateForm: PropTypes.func,
-  updateItem: PropTypes.func,
-  viewItemForm: PropTypes.object,
+  applyFilter: PropTypes.func,
   addItemForm: PropTypes.object,
-  selectItem: PropTypes.func,
-  isFetching: PropTypes.boolean,
+  createItem: PropTypes.func,
+  deleteItem: PropTypes.func,
   error: PropTypes.object,
   filter: PropTypes.string,
-  applyFilter: PropTypes.func
+  getTodoList: PropTypes.func,
+  isFetching: PropTypes.bool,
+  items: PropTypes.array,
+  selectItem: PropTypes.func,
+  updateForm: PropTypes.func,
+  updateItem: PropTypes.func,
+  viewItemForm: PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

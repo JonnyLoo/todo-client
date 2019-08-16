@@ -1,0 +1,18 @@
+{
+  "rootDir": "../",
+  "setupFilesAfterEnv": ["<rootDir>tests/setup-tests.js"],
+  "roots": [
+    "client",
+    "tests/unit"
+  ],
+  "moduleDirectories": [
+    "node_modules"
+  ],
+  "moduleFileExtensions": [
+    "js",
+    "jsx"
+  ],
+  "modulePaths": [
+    "client"
+  ]
+}

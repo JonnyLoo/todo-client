@@ -26,5 +26,10 @@ module.exports = {
       'comma-dangle': ['error', 'never'],
       'jsx-quotes': ['error', 'prefer-single'],
       'quotes': ['error', 'single']
+    },
+    'settings': {
+      'react': {
+        'version': 'detect'
+      }
     }
 };

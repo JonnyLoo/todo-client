@@ -12,16 +12,6 @@ html, body {
   height: 100%;
 }
 
-.center {
-  position: relative;
-  width: 200px;
-  height: 100px;
-  line-height: 100px;
-  text-align: center;
-  top: calc(50% - 50px);
-  left: calc(50% - 100px);
-}
-
 @import 'button';
 @import 'checkbox';
 @import 'text-input';
