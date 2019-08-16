@@ -13,7 +13,7 @@ export class FilterTab extends React.Component {
 
   render() {
     return (
-      <div className='filter-tab' onClick={this.onClick.bind(this)}>{ this.props.name }</div>
+      <div className={`filter-tab ${this.props.filter}`} onClick={this.onClick.bind(this)}>{ this.props.name }</div>
     );
   }
 }

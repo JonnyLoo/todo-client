@@ -10,14 +10,14 @@ import {
 const filterMap = {
   default: () => (item) => !item.completed,
   completed: () => (item) => item.completed,
-  overdue: (now) => (item) => isOverdue(convertDate(item.dueBy), now),
+  overdue: (now) => (item) => !item.completed && isOverdue(convertDate(item.dueBy), now),
   today: (now) => (item) => {
     const date = convertDate(item.dueBy);
-    return isDueToday(date, now);
+    return !item.completed && isDueToday(date, now);
   },
   tomorrow: (now) => (item) => {
     const date = convertDate(item.dueBy);
-    return isDueTomorrow(date, now);
+    return !item.completed && isDueTomorrow(date, now);
   }
 };
 

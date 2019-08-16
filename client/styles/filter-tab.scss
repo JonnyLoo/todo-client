@@ -5,4 +5,12 @@
   display: flex;
   align-items: center;
   border: solid #FAFAFA .05rem;
+
+  &.overdue {
+    color: #FCB5AC;
+  }
+
+  &.soon {
+    color: #B5E5CF;
+  }
 }

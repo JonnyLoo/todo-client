@@ -6,16 +6,21 @@
   width: 100%;
   height: 50px;
 
-  .item-name {
-    margin: auto;
-    margin-left: 0;
-  }
-
+  .item-name,
   .item-due {
     margin: auto;
   }
 
   .btn {
     margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  &.overdue {
+    color: #FCB5AC;
+  }
+
+  &.soon {
+    color: #B5E5CF;
   }
 }

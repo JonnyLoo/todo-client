@@ -33,11 +33,11 @@ export class ItemList extends React.Component {
         <div className='item-list'>
           <div className='due-today'>
             <label className='tab-label'>Today</label>
-            { filter(this.props.items, 'today').map((item) => <Item key={item._id} item={item} deleteItem={this.props.deleteItem} selectItem={this.props.selectItem} />)}
+            { filter(this.props.items, 'today').map((item) => <Item key={item._id} item={item} deleteItem={this.props.deleteItem} selectItem={this.props.selectItem} type='soon' />)}
           </div>
           <div className='due-tomo'>
             <label className='tab-label'>Tomorrow</label>
-            { filter(this.props.items, 'tomorrow').map((item) => <Item key={item._id} item={item} deleteItem={this.props.deleteItem} selectItem={this.props.selectItem} />)}
+            { filter(this.props.items, 'tomorrow').map((item) => <Item key={item._id} item={item} deleteItem={this.props.deleteItem} selectItem={this.props.selectItem} type='soon' />)}
           </div>
         </div>
       );
@@ -57,8 +57,8 @@ export class ItemList extends React.Component {
           // determine the type of each item
           // allows for visual indication of which item falls in which category
           // mainly just useful for the main / non-filtered list
-          if (isOverdue(due, now)) type = 'overdue';
-          if (isDueToday(due, now) || isDueTomorrow(due, now)) type = 'soon';
+          if (!item.completed && isOverdue(due, now)) type = 'overdue';
+          if (!item.completed && isDueToday(due, now) || isDueTomorrow(due, now)) type = 'soon';
 
           return (
             <Item
