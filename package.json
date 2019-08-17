@@ -1,8 +1,9 @@
 {
-  "name": "todo-client",
+  "name": "todo-ui",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "todo app ui",
+  "repository": "git@github.com:JonnyLoo/todo-ui.git",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "cross-env NODE_ENV=dev nodemon --watch web app.js",

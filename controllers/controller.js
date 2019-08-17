@@ -1,7 +1,8 @@
 const request = require('request');
 
-// could store this in some config file and use different urls for diff envs
-const BASE_URL = 'http://localhost:3001/api/item';
+// could store urls in some config file and use different urls for diff envs
+// here SERVER_BASE_URL can be set for when using docker
+const BASE_URL = process.env.SERVER_BASE_URL || 'http://localhost:3001/api/item';
 
 // make request to get todo list
 const getList = (req, res) => {
