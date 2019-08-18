@@ -1,4 +1,4 @@
-# todo-ui
+# Task Manager UI (totally not ripping off windows)
 
 ### Locally
 Install and build  
@@ -11,7 +11,7 @@ Run with
 npm start
 ```
 
-With hot-reloading  
+Dev with hot-reloading  
 ```
 npm run dev
 ```
