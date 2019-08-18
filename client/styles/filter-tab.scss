@@ -1,16 +1,32 @@
 .filter-tab {
-  width: calc(100% - 2rem);
+  width: calc(100% - 2.5rem);
   height: 100%;
-  padding-left: 2rem;
+  padding-right: 2.5rem;
   display: flex;
   align-items: center;
-  border: solid #FAFAFA .05rem;
+  justify-content: flex-end;
+  margin-right: .05rem;
+  border: solid $white .05rem;
+  border-left: none;
+
+  &.selected {
+    background: $dark-gray;
+  }
 
   &.overdue {
-    color: #FCB5AC;
+    color: $red;
   }
 
   &.soon {
-    color: #B5E5CF;
+    color: $yellow;
+  }
+
+  &:hover {
+    border-right-width: .15rem;
+    border-right-color: $green;
+  }
+
+  &:active {
+    background: $dark-gray;
   }
 }

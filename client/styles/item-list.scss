@@ -1,5 +1,4 @@
 .item-list {
-  background: #3D5B59;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,10 +7,12 @@
   padding: 2rem;
   padding-top: 50px;
   right: 15%;
-  left: 35%;
+  left: 30%;
   top: 0;
   bottom: 0;
-  border: solid #FAFAFA .05rem;
+  border-left: solid $white .05rem;
+  border-right: solid $white .05rem;
+  overflow-y: auto;
 
   .due-today,
   .due-tomo {

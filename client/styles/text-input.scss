@@ -1,3 +1,20 @@
 .txt-input {
+  .txt-input-label {
+    margin-bottom: 10px;
+  }
 
+  .txt-input-input {
+    width: 300px;
+    height: 30px;
+    padding-left: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    background-color: $white;
+    border: none;
+    border-bottom: solid $dark-red .05rem;
+
+    &:focus {
+      outline-color: $dark-red;
+    }
+  }
 }

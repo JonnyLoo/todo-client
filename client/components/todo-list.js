@@ -44,6 +44,7 @@ export class TodoList extends React.Component {
           />
           <Filter
             applyFilter={this.props.applyFilter}
+            selectedFilter={this.props.filter}
           />
         </div>
       )

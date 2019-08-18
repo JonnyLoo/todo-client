@@ -1,3 +1,22 @@
 .btn {
-  
+  width: 75px;
+  height: 35px;
+  background: $dark-gray;
+  color: $white;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+
+  &:hover {
+    background: $white;
+    color: $dark-gray;
+  }
+
+  &:active {
+    border: solid $dark-red .05rem;
+  }
+
+  &:focus {
+    outline-color: $dark-red;
+  }
 }

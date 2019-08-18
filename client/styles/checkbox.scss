@@ -1,3 +1,14 @@
 .checkbox {
+  display: inline-flex;
 
+  .checkbox-label {
+    margin-right: 10px;
+    align-items: center;
+  }
+
+  .checkbox-input {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
 }

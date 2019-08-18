@@ -12,8 +12,10 @@ export class FilterTab extends React.Component {
   }
 
   render() {
+    // should probably use classnames package to deal with classes
+    const isSelected = this.props.filter === this.props.selectedFilter;
     return (
-      <div className={`filter-tab ${this.props.filter}`} onClick={this.onClick.bind(this)}>{ this.props.name }</div>
+      <div className={`filter-tab ${this.props.filter} ${isSelected ? 'selected': ''}`} onClick={this.onClick.bind(this)}>{ this.props.name }</div>
     );
   }
 }
@@ -21,5 +23,6 @@ export class FilterTab extends React.Component {
 FilterTab.propTypes = {
   applyFilter: PropTypes.func,
   filter: PropTypes.string,
-  name: PropTypes.string
+  name: PropTypes.string,
+  selectedFilter: PropTypes.string
 };
